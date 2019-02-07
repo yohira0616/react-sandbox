@@ -1,4 +1,5 @@
 import React, {Component, FormEvent} from "react";
+import Button from '@material-ui/core/Button'
 
 interface TodoFormState {
   name: string
@@ -14,14 +15,14 @@ export default class TodoForm extends Component<TodoFormProps, TodoFormState> {
     super(props);
     this.state = {name: ""}
     this.handleChange = this.handleChange.bind(this)
-    this.onSubmitClick = this.onSubmitClick.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
   handleChange(event: FormEvent<HTMLInputElement>) {
     this.setState({name: event.currentTarget.value})
   }
 
-  onSubmitClick(event: FormEvent<HTMLButtonElement>) {
+  onSubmit(event: any) {
     event.preventDefault()
     this.props.onSubmit(this.state.name)
     this.setState({name: ""})
@@ -29,10 +30,10 @@ export default class TodoForm extends Component<TodoFormProps, TodoFormState> {
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.onSubmit}>
         <label htmlFor="todo-form">新しいタスクを追加</label>
-        <input type="text" id="todo-form" value={this.state.name} onChange={this.handleChange}/>
-        <button onClick={this.onSubmitClick}>追加</button>
+        <input type="text" id="todo-form" value={this.state.name} onChange={this.handleChange} required={true}/>
+        <Button color="primary" variant="contained">追加</Button>
       </form>
     )
   }

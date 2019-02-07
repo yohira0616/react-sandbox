@@ -1,4 +1,5 @@
 import React, {Component, FormEvent} from "react";
+import Button from '@material-ui/core/Button'
 
 interface TodoProps {
   id: number
@@ -13,7 +14,7 @@ export default class Todo extends Component<TodoProps, {}> {
     this.onSubmitClick = this.onSubmitClick.bind(this)
   }
 
-  onSubmitClick(event: FormEvent<HTMLButtonElement>) {
+  onSubmitClick(event: any) {
     event.preventDefault()
     this.props.onFinishButtonClick(this.props.id)
   }
