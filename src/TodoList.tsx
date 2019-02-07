@@ -5,8 +5,11 @@ import TodoForm from "./TodoForm"
 import TodoViewObject from "./TodoViewObject"
 import './TodoList.css'
 
+interface TodoListState {
+  todos: Array<TodoViewObject>
+}
 
-export default class TodoList extends Component<{}, { todos: Array<TodoViewObject> }> {
+export default class TodoList extends Component<{}, TodoListState> {
 
   constructor(props: {}) {
     super(props)
@@ -16,7 +19,6 @@ export default class TodoList extends Component<{}, { todos: Array<TodoViewObjec
     this.addTodo = this.addTodo.bind(this)
     this.removeTodo = this.removeTodo.bind(this)
   }
-
 
   private fetchTodoList(): Array<TodoViewObject> {
     return [new TodoViewObject(1, "hoge"), new TodoViewObject(2, "fuga")]
