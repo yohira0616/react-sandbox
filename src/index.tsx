@@ -5,6 +5,7 @@ import App from './App';
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 import * as serviceWorker from './serviceWorker';
+import 'normalize.css'
 
 //ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(<TodoList />, document.getElementById('root'));
