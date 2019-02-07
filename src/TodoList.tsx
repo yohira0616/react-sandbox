@@ -3,6 +3,7 @@ import Todo from "./Todo"
 import TodoForm from "./TodoForm"
 
 import TodoViewObject from "./TodoViewObject"
+import './TodoList.css'
 
 
 export default class TodoList extends Component<{}, { todos: Array<TodoViewObject> }> {
@@ -36,10 +37,10 @@ export default class TodoList extends Component<{}, { todos: Array<TodoViewObjec
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Hello React! This is TodoList</h1>
         <TodoForm onSubmit={this.addTodo}/>
-        <ul>
+        <ul className="todo-ul">
           {this.renderTodo()}
         </ul>
       </div>
