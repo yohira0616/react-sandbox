@@ -1,9 +1,18 @@
 import React, {Component} from "react";
 
-export default class Todo extends Component {
+interface TodoProps {
+  name: string
+}
+
+export default class Todo extends Component<TodoProps, {}> {
+
+  constructor(props: TodoProps) {
+    super(props)
+  }
+
   render() {
     return (
-      <div>Hello,React! This is Todo</div>
+      <li>{this.props.name}</li>
     )
   }
 }
