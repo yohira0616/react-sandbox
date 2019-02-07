@@ -2,8 +2,10 @@ import React, {Component} from "react";
 import Todo from "./Todo"
 import TodoForm from "./TodoForm"
 
+import TodoViewObject from "./TodoViewObject"
 
-export default class TodoList extends Component<{}, { todos: Array<any> }> {
+
+export default class TodoList extends Component<{}, { todos: Array<TodoViewObject> }> {
 
   constructor(props: {}) {
     super(props)
@@ -11,28 +13,31 @@ export default class TodoList extends Component<{}, { todos: Array<any> }> {
       todos: this.fetchTodoList()
     }
     this.addTodo = this.addTodo.bind(this)
+    this.removeTodo = this.removeTodo.bind(this)
   }
 
 
-  fetchTodoList() {
-    return [{
-      name: "hoge"
-    }, {
-      name: "fuga"
-    }]
+  private fetchTodoList(): Array<TodoViewObject> {
+    return [new TodoViewObject(1, "hoge"), new TodoViewObject(2, "fuga")]
   }
 
   addTodo(name: string) {
-    this.state.todos.push({name: name})
+    this.state.todos.push(new TodoViewObject(this.state.todos.length + 1, name))
     this.setState({
       todos: this.state.todos
+    })
+  }
+
+  removeTodo(id: number) {
+    this.setState({
+      todos: this.state.todos.filter(todo => todo.id !== id)
     })
   }
 
   render() {
     return (
       <div>
-        <h1>Hello React! This is Todolist</h1>
+        <h1>Hello React! This is TodoList</h1>
         <TodoForm onSubmit={this.addTodo}/>
         <ul>
           {this.renderTodo()}
@@ -41,9 +46,9 @@ export default class TodoList extends Component<{}, { todos: Array<any> }> {
     )
   }
 
-  renderTodo() {
-    return this.state.todos.map((todo, index) => {
-      return (<Todo name={todo.name} key={index}/>)
+  private renderTodo() {
+    return this.state.todos.map((todo) => {
+      return (<Todo id={todo.id} name={todo.name} onFinishButtonClick={this.removeTodo} key={todo.id}/>)
     })
   }
 }
