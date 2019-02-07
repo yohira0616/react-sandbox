@@ -4,9 +4,13 @@ interface TodoFormState {
   name: string
 }
 
-export default class TodoForm extends Component<{}, TodoFormState> {
+interface TodoFormProps {
+  onSubmit: (new_todo: string) => void
+}
 
-  constructor(props: {}) {
+export default class TodoForm extends Component<TodoFormProps, TodoFormState> {
+
+  constructor(props: TodoFormProps) {
     super(props);
     this.state = {name: ""}
     this.handleChange = this.handleChange.bind(this)
@@ -19,7 +23,8 @@ export default class TodoForm extends Component<{}, TodoFormState> {
 
   onSubmitClick(event: FormEvent<HTMLButtonElement>) {
     event.preventDefault()
-    console.log(`clicked!! ${this.state.name}`)
+    this.props.onSubmit(this.state.name)
+    this.setState({name: ""})
   }
 
   render() {
