@@ -4,19 +4,20 @@ interface TodoFormState {
   name: string
 }
 
-export default class TodoForm extends Component<{},TodoFormState> {
+export default class TodoForm extends Component<{}, TodoFormState> {
 
   constructor(props: {}) {
     super(props);
     this.state = {name: ""}
+    this.handleChange = this.handleChange.bind(this)
+    this.onSubmitClick = this.onSubmitClick.bind(this)
   }
 
-  handleChange(event: FormEvent<HTMLInputElement>){
-    console.log(event.target)
-    this.setState({name: ""})
+  handleChange(event: FormEvent<HTMLInputElement>) {
+    this.setState({name: event.currentTarget.value})
   }
 
-  onSubmitClick(event: FormEvent<HTMLButtonElement>){
+  onSubmitClick(event: FormEvent<HTMLButtonElement>) {
     event.preventDefault()
     console.log(`clicked!! ${this.state.name}`)
   }
