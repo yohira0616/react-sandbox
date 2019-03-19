@@ -4,6 +4,7 @@ import TodoForm from "./TodoForm"
 
 import TodoViewObject from "./TodoViewObject"
 import './TodoList.css'
+import CounterButton from "./CounterButton";
 
 interface TodoListState {
   todos: Array<TodoViewObject>
@@ -45,6 +46,8 @@ export default class TodoList extends Component<{}, TodoListState> {
         <ul className="todo-ul">
           {this.renderTodo()}
         </ul>
+        <CounterButton/>
+        <div>カウント: 1</div>
       </div>
     )
   }
