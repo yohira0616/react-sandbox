@@ -1,21 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 import * as serviceWorker from './serviceWorker';
 import 'normalize.css'
-// import {createStore} from "redux";
-// import CounterReducer from "./reducers/CounterReducer"
-//
-// let store = createStore(CounterReducer)
-//
-// //store.subscribe(()=> console.log(store.getState()))
-//
-// store.dispatch({type:'INCREMENT'})
-// store.dispatch({type:'INCREMENT'})
-// store.dispatch({type:'DECREMENT'})
 import store from './stores/CounterStore'
 
 
