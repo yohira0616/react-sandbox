@@ -1,4 +1,4 @@
-import React, {Component, FormEvent} from "react";
+import React from "react";
 
 interface TodoProps {
   id: number
@@ -6,23 +6,19 @@ interface TodoProps {
   onFinishButtonClick: (key: number) => void
 }
 
-export default class Todo extends Component<TodoProps, {}> {
+const Todo: React.FC<TodoProps> = (props) => {
 
-  constructor(props: TodoProps) {
-    super(props)
-    this.onSubmitClick = this.onSubmitClick.bind(this)
-  }
+  const onSubmitClick = (event: any) => {
+    event.preventDefault();
+    props.onFinishButtonClick(props.id);
+  };
 
-  onSubmitClick(event: any) {
-    event.preventDefault()
-    this.props.onFinishButtonClick(this.props.id)
-  }
+  return (
+    <li>
+      {props.name}
+      <button onClick={onSubmitClick}>完了</button>
+    </li>
+  );
+};
 
-  render() {
-    return (
-      <li>{this.props.name}
-        <button onClick={this.onSubmitClick}>完了</button>
-      </li>
-    )
-  }
-}
+export default Todo;
