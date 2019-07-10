@@ -6,10 +6,12 @@ import * as serviceWorker from "./serviceWorker";
 import "normalize.css";
 import store from "./stores/CounterStore";
 import { Provider } from "react-redux";
+import AppRouter from "./AppRouter";
 
 
 const render = () => ReactDOM.render(
   <Provider store={store}>
+    <AppRouter/>
     <TodoList/>
   </Provider>
   , document.getElementById("root"));
