@@ -6,6 +6,7 @@ import TodoViewObject from "./TodoModel";
 import "./TodoList.css";
 import CounterButton from "./CounterButton";
 import store from "./stores/CounterStore";
+import {fetch} from "./api/TodoRepository"
 
 interface TodoListState {
   todos: Array<TodoViewObject>
@@ -16,21 +17,10 @@ export default class TodoList extends Component<{}, TodoListState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      todos: this.fetchTodoList()
+      todos: fetch()
     };
     this.addTodo = this.addTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
-  }
-
-  private fetchTodoList(): Array<TodoViewObject> {
-    const defaultData = [{
-      id: 1,
-      name: "hoge"
-    }, {
-      id: 2,
-      name: "fuga"
-    }];
-    return defaultData;
   }
 
   addTodo(name: string) {
