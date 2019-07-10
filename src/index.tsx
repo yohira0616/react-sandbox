@@ -12,7 +12,6 @@ import AppRouter from "./AppRouter";
 const render = () => ReactDOM.render(
   <Provider store={store}>
     <AppRouter/>
-    <TodoList/>
   </Provider>
   , document.getElementById("root"));
 
