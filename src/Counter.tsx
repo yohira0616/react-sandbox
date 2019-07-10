@@ -1,7 +1,7 @@
 import React from "react";
 import CounterButton from "./TodoList";
 import { connect } from "react-redux";
-import { increment, decrement, reset } from "./actionCreators";
+import { increment, decrement, reset } from "./actioncreators/actionCreators";
 
 type Props = {
   count: number
