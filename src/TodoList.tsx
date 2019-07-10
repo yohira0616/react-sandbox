@@ -1,11 +1,11 @@
-import React, {Component} from "react";
-import Todo from "./Todo"
-import TodoForm from "./TodoForm"
+import React, { Component } from "react";
+import Todo from "./Todo";
+import TodoForm from "./TodoForm";
 
-import TodoViewObject from "./TodoViewObject"
-import './TodoList.css'
+import TodoViewObject from "./TodoModel";
+import "./TodoList.css";
 import CounterButton from "./CounterButton";
-import store from "./stores/CounterStore"
+import store from "./stores/CounterStore";
 
 interface TodoListState {
   todos: Array<TodoViewObject>
@@ -14,29 +14,40 @@ interface TodoListState {
 export default class TodoList extends Component<{}, TodoListState> {
 
   constructor(props: {}) {
-    super(props)
+    super(props);
     this.state = {
       todos: this.fetchTodoList()
-    }
-    this.addTodo = this.addTodo.bind(this)
-    this.removeTodo = this.removeTodo.bind(this)
+    };
+    this.addTodo = this.addTodo.bind(this);
+    this.removeTodo = this.removeTodo.bind(this);
   }
 
   private fetchTodoList(): Array<TodoViewObject> {
-    return [new TodoViewObject(1, "hoge"), new TodoViewObject(2, "fuga")]
+    const defaultData = [{
+      id: 1,
+      name: "hoge"
+    }, {
+      id: 2,
+      name: "fuga"
+    }];
+    return defaultData;
   }
 
   addTodo(name: string) {
-    this.state.todos.push(new TodoViewObject(this.state.todos.length + 1, name))
+    const newTodo = {
+      id: this.state.todos.length + 1,
+      name: name
+    };
+    this.state.todos.push(newTodo);
     this.setState({
       todos: this.state.todos
-    })
+    });
   }
 
   removeTodo(id: number) {
     this.setState({
       todos: this.state.todos.filter(todo => todo.id !== id)
-    })
+    });
   }
 
   render() {
@@ -50,12 +61,12 @@ export default class TodoList extends Component<{}, TodoListState> {
         <CounterButton/>
         <div>カウント: {store.getState()}</div>
       </div>
-    )
+    );
   }
 
   private renderTodo() {
     return this.state.todos.map((todo) => {
-      return (<Todo id={todo.id} name={todo.name} onFinishButtonClick={this.removeTodo} key={todo.id}/>)
-    })
+      return (<Todo id={todo.id} name={todo.name} onFinishButtonClick={this.removeTodo} key={todo.id}/>);
+    });
   }
 }
