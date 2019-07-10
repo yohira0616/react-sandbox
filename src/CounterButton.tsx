@@ -1,19 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import store from './stores/CounterStore'
 
-export default class CounterButton extends Component {
-
-  constructor(props: any) {
-    super(props)
+const CounterButton: React.FC<{}> = (props) => {
+  const onClick = () => {
+    store.dispatch({type: "INCREMENT"})
   }
-
-  onClick() {
-    store.dispatch({type: 'INCREMENT'})
-  }
-
-  render() {
-    return <button onClick={this.onClick}>カウントアップボタン</button>
-  }
-
+  return (
+    <button onClick={onClick}>CountUP</button>
+  )
 }
+
+export default CounterButton
