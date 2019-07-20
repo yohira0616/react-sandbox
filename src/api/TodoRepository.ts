@@ -1,4 +1,4 @@
-import TodoModel from "../TodoModel";
+import TodoModel from "../TodoList/TodoModel";
 
 export function fetch() {
   const defaultData: TodoModel[] = [{

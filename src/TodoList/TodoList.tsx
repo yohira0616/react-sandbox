@@ -4,10 +4,10 @@ import TodoForm from "./TodoForm";
 
 import TodoViewObject from "./TodoModel";
 import "./TodoList.css";
-import CounterButton from "./CounterButton";
-import store from "./stores/CounterStore";
-import {fetch} from "./api/TodoRepository"
-import HookCounter from "./HookCounter"
+import CounterButton from "../CounterButton";
+import store from "../stores/CounterStore";
+import {fetch} from "../api/TodoRepository"
+import HookCounter from "../HookCounter"
 
 interface TodoListState {
   todos: Array<TodoViewObject>
