@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import TodoList from "./TodoList";
 import { UserStateSample } from "./UseStateSample";
+import Enquete from "./Enquete";
 
 function Users() {
   return <h2>Users</h2>;
@@ -28,6 +29,7 @@ function AppRouter() {
         <Route path="/" exact component={TodoList}/>
         <Route path="/about/" component={UserStateSample}/>
         <Route path="/users/" component={Users}/>
+        <Route path="/enquete/" component={Enquete}/>
       </div>
     </Router>
   );
