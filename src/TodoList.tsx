@@ -7,6 +7,7 @@ import "./TodoList.css";
 import CounterButton from "./CounterButton";
 import store from "./stores/CounterStore";
 import {fetch} from "./api/TodoRepository"
+import HookCounter from "./HookCounter"
 
 interface TodoListState {
   todos: Array<TodoViewObject>
@@ -50,6 +51,7 @@ export default class TodoList extends Component<{}, TodoListState> {
         </ul>
         <CounterButton/>
         <div>カウント: {store.getState()}</div>
+        <HookCounter></HookCounter>
       </div>
     );
   }
