@@ -1,5 +1,5 @@
 import React from "react";
-import CounterButton from "./TodoList/TodoList";
+import CounterButton from "./CounterButton";
 import { connect } from "react-redux";
 import { increment, decrement, reset } from "./actioncreators/actionCreators";
 
