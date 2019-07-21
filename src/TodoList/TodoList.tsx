@@ -7,7 +7,6 @@ import "./TodoList.css";
 import CounterButton from "../CounterButton";
 import store from "../stores/CounterStore";
 import { fetch } from "../api/TodoRepository";
-import HookCounter from "../HookCounter";
 
 const TodoList: React.FC = props => {
   const [todos, setTodos] = useState<TodoViewObject[]>(fetch());
