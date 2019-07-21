@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import TodoList from "./TodoList/TodoList";
 import Enquete from "./Enquete";
 import HookCounter from "./HookCounter";
+import TimerCountUp from "./TimerCountUp";
 
 // sample
 function Users() {
@@ -32,6 +33,7 @@ function AppRouter() {
         <Route path="/enquete/" component={Enquete}/>
         <Route path="/hookcounter" component={HookCounter} />
       </div>
+      <TimerCountUp />
     </Router>
   );
 }
