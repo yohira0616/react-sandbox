@@ -38,7 +38,6 @@ const TodoList: React.FC = props => {
       </ul>
       <CounterButton/>
       <div>カウント: {store.getState()}</div>
-      <HookCounter />
     </div>
   );
 };
