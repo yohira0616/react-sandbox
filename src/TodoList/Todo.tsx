@@ -8,7 +8,7 @@ interface TodoProps {
 
 const Todo: React.FC<TodoProps> = (props) => {
 
-  const onSubmitClick = (event: any) => {
+  const onSubmitClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     props.onFinishButtonClick(props.id);
   };

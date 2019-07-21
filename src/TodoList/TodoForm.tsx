@@ -11,11 +11,11 @@ const TodoForm: React.FC<TodoFormProps> = props => {
   const handleChange = useCallback((e: FormEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value);
   }, [name]);
-  const onSubmit = useCallback((event: FormEvent)=>{
-    event.preventDefault()
-    console.log(name)
-    setName("")
-  },[name])
+  const onSubmit = useCallback((event: FormEvent) => {
+    event.preventDefault();
+    props.onSubmit(name);
+    setName("");
+  }, [name]);
 
   return (
     <form onSubmit={onSubmit}>
