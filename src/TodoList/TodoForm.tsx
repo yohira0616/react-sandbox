@@ -1,40 +1,29 @@
-import React, {Component, FormEvent} from "react";
-import Button from '@material-ui/core/Button'
-
-interface TodoFormState {
-  name: string
-}
+import React, { Component, FormEvent, useCallback, useState } from "react";
+import Button from "@material-ui/core/Button";
 
 interface TodoFormProps {
   onSubmit: (new_todo: string) => void
 }
 
-export default class TodoForm extends Component<TodoFormProps, TodoFormState> {
+const TodoForm: React.FC<TodoFormProps> = props => {
 
-  constructor(props: TodoFormProps) {
-    super(props);
-    this.state = {name: ""}
-    this.handleChange = this.handleChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
-  }
-
-  handleChange(event: FormEvent<HTMLInputElement>) {
-    this.setState({name: event.currentTarget.value})
-  }
-
-  onSubmit(event: any) {
+  const [name, setName] = useState("");
+  const handleChange = useCallback((e: FormEvent<HTMLInputElement>) => {
+    setName(e.currentTarget.value);
+  }, [name]);
+  const onSubmit = useCallback((event: FormEvent)=>{
     event.preventDefault()
-    this.props.onSubmit(this.state.name)
-    this.setState({name: ""})
-  }
+    console.log(name)
+    setName("")
+  },[name])
 
-  render() {
-    return (
-      <form onSubmit={this.onSubmit}>
-        <label htmlFor="todo-form">新しいタスクを追加</label>
-        <input type="text" id="todo-form" value={this.state.name} onChange={this.handleChange} required={true}/>
-        <Button color="primary" variant="contained">追加</Button>
-      </form>
-    )
-  }
+  return (
+    <form onSubmit={onSubmit}>
+      <label htmlFor="todo-form">新しいタスクを追加</label>
+      <input type="text" id="todo-form" value={name} onChange={handleChange} required={true}/>
+      <Button type="submit" color="primary" variant="contained">追加</Button>
+    </form>
+  );
 };
+
+export default TodoForm;
