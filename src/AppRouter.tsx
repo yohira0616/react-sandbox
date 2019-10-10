@@ -10,6 +10,10 @@ function Users() {
   return <h2>Users</h2>;
 }
 
+function antd(){
+  return <p>Antd</p>
+}
+
 function AppRouter() {
   return (
     <Router>
@@ -25,6 +29,9 @@ function AppRouter() {
             <li>
               <Link to="/users/">Users</Link>
             </li>
+            <li>
+              <Link to="/antd/">Antd</Link>
+            </li>
           </ul>
         </nav>
 
@@ -32,6 +39,7 @@ function AppRouter() {
         <Route path="/users/" component={Users}/>
         <Route path="/enquete/" component={Enquete}/>
         <Route path="/hookcounter" component={HookCounter} />
+        <Route path="/antd" component={antd} />
       </div>
       <TimerCountUp />
     </Router>
