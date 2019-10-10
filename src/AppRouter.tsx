@@ -4,6 +4,8 @@ import TodoList from "./TodoList/TodoList";
 import Enquete from "./Enquete";
 import HookCounter from "./HookCounter";
 import TimerCountUp from "./TimerCountUp";
+import {DatePicker} from "antd"
+import "antd/dist/antd.css"
 
 // sample
 function Users() {
@@ -11,7 +13,10 @@ function Users() {
 }
 
 function antd(){
-  return <p>Antd</p>
+  return (<div>
+    <p>antd</p>
+    <DatePicker />
+  </div>)
 }
 
 function AppRouter() {
