@@ -15,7 +15,6 @@ function Users() {
 function antd(){
   return (<div>
     <p>antd</p>
-    <DatePicker />
   </div>)
 }
 
